@@ -32,5 +32,7 @@ namespace StatTrackr.Data.Repositories
         {
             return _dbSet.Where(x => x.GameId == id);
         }
+
+        
     }
 }

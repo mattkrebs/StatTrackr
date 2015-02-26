@@ -98,6 +98,10 @@
     <Compile Include="Migrations\201502252215360_Add Stats.Designer.cs">
       <DependentUpon>201502252215360_Add Stats.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502261753444_Add Stats2.cs" />
+    <Compile Include="Migrations\201502261753444_Add Stats2.Designer.cs">
+      <DependentUpon>201502261753444_Add Stats2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatTrackrContext.cs" />
@@ -112,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502252215360_Add Stats.resx">
       <DependentUpon>201502252215360_Add Stats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502261753444_Add Stats2.resx">
+      <DependentUpon>201502261753444_Add Stats2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

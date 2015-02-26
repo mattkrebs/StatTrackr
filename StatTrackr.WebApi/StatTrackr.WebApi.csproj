@@ -231,11 +231,13 @@
     <Compile Include="Models\Interfaces\IStatLineViewModel.cs" />
     <Compile Include="Models\Request\StatLineRequest.cs" />
     <Compile Include="Models\Request\TeamRequest.cs" />
+    <Compile Include="Models\Response\GameStatsResponse.cs" />
     <Compile Include="Models\Response\PlayerResponse.cs" />
     <Compile Include="Models\Response\StatLineResponse.cs" />
     <Compile Include="Models\StatTypeViewModel.cs" />
     <Compile Include="Models\Response\TeamResponse.cs" />
     <Compile Include="Models\Response\GameResponse.cs" />
+    <Compile Include="Models\TeamStatsViewModel.cs" />
     <Compile Include="Modules\EFModule.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />

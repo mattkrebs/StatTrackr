@@ -29,6 +29,7 @@ namespace StatTrackr.Model
         public DbSet<Player> Players { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<StatLine> StatLines { get; set; }
+        public DbSet<StatType> StatTypes { get; set; }
 
 
 
