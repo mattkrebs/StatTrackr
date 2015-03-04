@@ -8,8 +8,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using StatTrackr.WebApi.Models.Response;
-using StatTrackr.WebApi.Models.Request;
+using StatTrackr.Service.Models.Response;
+using StatTrackr.Service.Models.Request;
 using System.Web.Http.Description;
 
 namespace StatTrackr.WebApi.Controllers
@@ -18,40 +18,39 @@ namespace StatTrackr.WebApi.Controllers
     {
 
         ITeamService _service;
-        IPlayerService _playerService;
-        public TeamController(ITeamService service, IPlayerService playerService)
+        public TeamController(ITeamService service)
         {
             _service = service;
-            _playerService = playerService;
         }
         // GET: api/Team
         [ResponseType(typeof(IEnumerable<TeamResponse>))]
         public IHttpActionResult Get()
         {
-            return Ok(Mapper.Map<IEnumerable<TeamResponse>>(_service.GetAll()));
+            return Ok(_service.GetAll());
         }
 
         // GET: api/Team/5
         [ResponseType(typeof(TeamResponse))]
         public IHttpActionResult Get(int id)
         {
-            var teamExisting = _service.GetById(id);
-            return Ok(Mapper.Map<TeamResponse>(teamExisting));
+            var response = _service.GetById(id);
+
+            if (response == null)
+                return NotFound();
+
+            return Ok(response);
         }
 
         // POST: api/Team
         [ResponseType(typeof(TeamResponse))]
         public IHttpActionResult Post([FromBody]TeamRequest team)
         {
-            Team teamExisting = new Team();
-            teamExisting.Name = team.Name;
-            teamExisting.Hometown = team.Hometown;
-            teamExisting.CoachName = team.CoachName;
-            teamExisting.State = team.State;
+          if (!ModelState.IsValid)
+              return BadRequest();
+            
+            var response = _service.Create(team);
 
-            _service.Create(teamExisting);
-
-            return CreatedAtRoute("DefaultApi", new { id = teamExisting.TeamId }, Mapper.Map<TeamResponse>(teamExisting));
+            return CreatedAtRoute("DefaultApi", new { id = response.TeamId }, response);
         }
 
         // PUT: api/Team/5
@@ -61,44 +60,32 @@ namespace StatTrackr.WebApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var teamExisting = _service.GetById(team.TeamId);
-            if (teamExisting == null)
+            var response = _service.Update(id, team);
+            if (response == null)
                 return NotFound();
 
-            teamExisting = _service.GetById(team.TeamId);
-            teamExisting.Name = team.Name;
-            teamExisting.Hometown = team.Hometown;
-            teamExisting.CoachName = team.CoachName;
-            teamExisting.State = team.State;
-
-            _service.Update(teamExisting);
-
-            return Ok(Mapper.Map<TeamResponse>(teamExisting));
+            return Ok(response);
         }
 
         [ResponseType(typeof(TeamResponse))]
         [Route("api/AddPlayerToTeam/{id}")]
         public IHttpActionResult AddPlayerToTeam(int id, [FromBody]PlayerRequest player)
         {
-           
-            var teamExisting = _service.GetById(id);
-            if (teamExisting == null)
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var response = _service.AddPlayerToTeam(id, player);
+            if (response == null)
                 return NotFound();
 
-            var existingPlayer = _playerService.GetById(player.PlayerId);
-            if (existingPlayer != null)
-                teamExisting.Players.Add(existingPlayer);
-            else
-                teamExisting.Players.Add(Mapper.Map<Player>(player));
 
-            _service.Update(teamExisting);
-            return Ok(Mapper.Map<TeamResponse>(teamExisting));
+            return Ok(response);
         }
         // DELETE: api/Team/5
         public IHttpActionResult Delete(int id)
         {
-            var teamExisting = _service.GetById(id);
-            _service.Delete(teamExisting);
+            if (!_service.Delete(id))
+                return NotFound();
 
             return Ok();
         }

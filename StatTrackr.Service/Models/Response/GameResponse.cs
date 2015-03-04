@@ -1,13 +1,12 @@
-﻿using StatTrackr.WebApi.Models.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
-namespace StatTrackr.WebApi.Models.Response
+namespace StatTrackr.Service.Models.Response
 {
-    public class GameResponse : IGameViewModel
+    public class GameResponse
     {
         public int GameId { get; set; }      
         public TeamResponse HomeTeam { get; set; }

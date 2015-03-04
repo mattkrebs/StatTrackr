@@ -8,8 +8,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using StatTrackr.WebApi.Models.Response;
-using StatTrackr.WebApi.Models.Request;
+using StatTrackr.Service.Models.Response;
+using StatTrackr.Service.Models.Request;
 using System.Web.Http.Description;
 
 namespace StatTrackr.WebApi.Controllers
@@ -25,7 +25,7 @@ namespace StatTrackr.WebApi.Controllers
         [ResponseType(typeof(IEnumerable<PlayerResponse>))]
         public IHttpActionResult Get()
         {
-            return Ok(Mapper.Map<IEnumerable<PlayerResponse>>(_service.GetAll()));
+            return Ok(_service.GetAll());
         }
 
         // GET: api/Player/5
@@ -37,7 +37,7 @@ namespace StatTrackr.WebApi.Controllers
             if (playerExisting == null) 
                 return NotFound();
 
-            return Ok(Mapper.Map<PlayerResponse>(playerExisting));
+            return Ok(playerExisting);
         }
 
         // POST: api/Player
@@ -47,10 +47,9 @@ namespace StatTrackr.WebApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var newPlayer = Mapper.Map<Player>(player);
-            _service.Create(newPlayer);
+           var response =  _service.Create(player);
 
-            return CreatedAtRoute("DefaultApi", newPlayer.PlayerId, Mapper.Map<PlayerResponse>(newPlayer));
+           return CreatedAtRoute("DefaultApi", response.PlayerId, response);
         }
 
         // PUT: api/Player/5
@@ -60,29 +59,18 @@ namespace StatTrackr.WebApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var playerExisting = _service.GetById(player.PlayerId);
-            if (playerExisting == null)
+            var response = _service.Update(id, player);
+            if (response == null)
                 return NotFound();
 
-            playerExisting.FirstName = player.FirstName;
-            playerExisting.LastName = player.LastName;
-            playerExisting.Number = player.Number;
-            playerExisting.PositionId = player.PositionId;
-            playerExisting.Age = player.Age;
-
-            _service.Update(playerExisting);
-
-            return Ok(Mapper.Map<PlayerResponse>(playerExisting));
+            return Ok(response);
         }
 
         // DELETE: api/Player/5
         public IHttpActionResult Delete(int id)
         {
-            var playerExisting = _service.GetById(id);
-            if (playerExisting == null)
+            if (!_service.Delete(id))
                 return NotFound();
-
-            _service.Delete(playerExisting);
 
             return Ok();
         }

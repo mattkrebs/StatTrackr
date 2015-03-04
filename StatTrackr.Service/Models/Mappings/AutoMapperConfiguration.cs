@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StatTrackr.WebApi.Models.Mappings
+namespace StatTrackr.Service.Models.Mappings
 {
     public static class AutoMapperConfiguration
     {

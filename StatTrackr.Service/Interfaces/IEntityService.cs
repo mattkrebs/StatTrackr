@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 namespace StatTrackr.Service.Interfaces
 {
 
-    public interface IEntityService<T> : IService
-        where T : EntityBase
+    public interface IEntityService<TRequest, TResponse> : IService
+        where TRequest : class, new() where TResponse : class
     {
-        void Create(T entity);
-        bool Delete(T entity);
-        IEnumerable<T> GetAll();
-        void Update(T entity);
+        TResponse Create(TRequest request);
+        IEnumerable<TResponse> GetAll();
+      
     }
 }

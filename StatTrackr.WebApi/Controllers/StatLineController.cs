@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
 using StatTrackr.Model.Data;
 using StatTrackr.Service.Interfaces;
-using StatTrackr.WebApi.Models.Request;
-using StatTrackr.WebApi.Models.Response;
+using StatTrackr.Service.Models.Request;
+using StatTrackr.Service.Models.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace StatTrackr.WebApi.Controllers
 {
@@ -20,52 +21,36 @@ namespace StatTrackr.WebApi.Controllers
             _service = service;
         }
         // GET: api/StatLine/5
+        [ResponseType(typeof(StatLineResponse))]
         public IHttpActionResult Get(Guid id)
         {
             var existing = _service.GetById(id);
             if (existing == null)
                 return NotFound();
            
-            return Ok(Mapper.Map<StatLineResponse>(existing));
+            return Ok(existing);
         }
      
 
         // POST: api/StatLine
+        [ResponseType(typeof(StatLineResponse))]
         public IHttpActionResult Post([FromBody]StatLineRequest statLine)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var newStatLine = Mapper.Map<StatLine>(statLine);
-            _service.Create(newStatLine);
+           var response =  _service.Create(statLine);
 
-            return Ok(Mapper.Map<StatLineResponse>(newStatLine));
+           return Ok(response);
         }
 
-        // PUT: api/StatLine/5
-        public IHttpActionResult Put(Guid id, [FromBody]StatLineRequest statLine)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var existing = _service.GetById(id);
-            if (existing == null)
-                return NotFound();
-
-            existing = Mapper.Map<StatLineRequest, StatLine>(statLine, existing);
-            _service.Update(existing);
-
-            return Ok(Mapper.Map<StatLineResponse>(existing));
-        }
+       
 
         // DELETE: api/StatLine/5
         public IHttpActionResult Delete(Guid id)
         {
-            var existing = _service.GetById(id);
-            if (existing == null)
+            if (!_service.Delete(id))
                 return NotFound();
-
-            _service.Delete(existing);
 
             return Ok();
         }

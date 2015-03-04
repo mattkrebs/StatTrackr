@@ -1,12 +1,16 @@
 ﻿using StatTrackr.Model.Data;
 using StatTrackr.Service.Interfaces;
+using StatTrackr.Service.Models.Request;
+using StatTrackr.Service.Models.Response;
 using System;
 using System.Threading.Tasks;
 
 namespace StatTrackr.Service.Interfaces
 {
-    public interface IPlayerService : IEntityService<Player>
+    public interface IPlayerService : IEntityService<PlayerRequest, PlayerResponse>
     {
-        Player GetById(int id);
+        PlayerResponse GetById(int id);
+        bool Delete(int id);
+        PlayerResponse Update(int id, PlayerRequest entity);
     }
 }

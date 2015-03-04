@@ -1,13 +1,12 @@
-﻿using StatTrackr.WebApi.Models.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
-namespace StatTrackr.WebApi.Models.Request
+namespace StatTrackr.Service.Models.Request
 {
-    public class GameRequest : IGameViewModel
+    public class GameRequest
     {
         public int GameId { get; set; }
         [Required]

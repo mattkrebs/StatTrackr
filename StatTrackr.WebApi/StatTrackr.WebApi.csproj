@@ -214,7 +214,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\PositionController.cs" />
     <Compile Include="Controllers\StatLineController.cs" />
+    <Compile Include="Controllers\StatTypeController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -223,20 +225,8 @@
     <Compile Include="Models\Interfaces\IGameViewModel.cs" />
     <Compile Include="Models\Interfaces\IPlayerViewModel.cs" />
     <Compile Include="Models\Interfaces\ITeamViewModel.cs" />
-    <Compile Include="Models\Mappings\AutoMapperConfiguration.cs" />
-    <Compile Include="Models\Mappings\StatTrackrProfile.cs" />
-    <Compile Include="Models\Request\GameRequest.cs" />
-    <Compile Include="Models\Request\PlayerRequest.cs" />
-    <Compile Include="Models\Request\RequestBase.cs" />
     <Compile Include="Models\Interfaces\IStatLineViewModel.cs" />
-    <Compile Include="Models\Request\StatLineRequest.cs" />
-    <Compile Include="Models\Request\TeamRequest.cs" />
-    <Compile Include="Models\Response\GameStatsResponse.cs" />
-    <Compile Include="Models\Response\PlayerResponse.cs" />
-    <Compile Include="Models\Response\StatLineResponse.cs" />
     <Compile Include="Models\StatTypeViewModel.cs" />
-    <Compile Include="Models\Response\TeamResponse.cs" />
-    <Compile Include="Models\Response\GameResponse.cs" />
     <Compile Include="Models\TeamStatsViewModel.cs" />
     <Compile Include="Modules\EFModule.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />

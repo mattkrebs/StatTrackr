@@ -1,14 +1,13 @@
-﻿using StatTrackr.WebApi.Models.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StatTrackr.WebApi.Models.Request
+namespace StatTrackr.Service.Models.Request
 {
-    public class PlayerRequest : IPlayerViewModel
+    public class PlayerRequest
     {
         public int PlayerId { get; set; }
         [Required]

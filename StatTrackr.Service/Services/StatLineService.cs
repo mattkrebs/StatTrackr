@@ -1,6 +1,9 @@
-﻿using StatTrackr.Data.Interfaces;
+﻿using AutoMapper;
+using StatTrackr.Data.Interfaces;
 using StatTrackr.Model.Data;
 using StatTrackr.Service.Interfaces;
+using StatTrackr.Service.Models.Request;
+using StatTrackr.Service.Models.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,27 +12,53 @@ using System.Threading.Tasks;
 
 namespace StatTrackr.Service.Services
 {
-    public class StatLineService : EntityService<StatLine>, IStatLineService
+    public class StatLineService : IStatLineService
     {
-         IUnitOfWork _unitOfWork;
-        IStatLineRepository _respository;
+        IUnitOfWork _unitOfWork;
+        IStatLineRepository _repository;
 
-        public StatLineService(IUnitOfWork unitOfWork, IStatLineRepository respository)
-            : base(unitOfWork, respository)
+        public StatLineService(IUnitOfWork unitOfWork, IStatLineRepository repository)
         {
             _unitOfWork = unitOfWork;
-            _respository = respository;
+            _repository = repository;
         }
-        public StatLine GetById(Guid id)
+        public StatLineResponse GetById(Guid id)
         {
-            return _respository.GetById(id);
+            return Mapper.Map<StatLineResponse>(_repository.GetById(id));
         }
 
-        public IEnumerable<StatLine> GetAllByGameId(int id)
+        public IEnumerable<StatLineResponse> GetAllByGameId(int id)
         {
-            return _respository.GetAllByGameId(id);
+            return Mapper.Map<IEnumerable<StatLineResponse>>(_repository.GetAllByGameId(id));
         }
 
-       
+
+        public StatLineResponse Create(StatLineRequest request)
+        {
+            if (request == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+            var response = _repository.Add(Mapper.Map<StatLine>(request));
+            _unitOfWork.Commit();
+            return Mapper.Map<StatLineResponse>(response);
+        }
+      
+
+        public bool Delete(Guid id)
+        {
+            var entity = _repository.GetById(id);
+            if (entity == null) throw new ArgumentNullException("entity");
+
+            _repository.Delete(entity);
+            _unitOfWork.Commit();
+            return true;
+        }
+        
+        public IEnumerable<StatLineResponse> GetAll()
+        {
+            return Mapper.Map<IEnumerable<StatLineResponse>>(_repository.GetAll());
+
+        }
     }
 }

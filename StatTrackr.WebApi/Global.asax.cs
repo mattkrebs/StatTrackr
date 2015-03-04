@@ -10,9 +10,9 @@ using Autofac;
 using StatTrackr.WebApi.Modules;
 using Autofac.Integration.WebApi;
 using System.Reflection;
-using StatTrackr.WebApi.Models.Mappings;
 using System.Web.Compilation;
 using StatTrackr.WebApi.Controllers;
+using StatTrackr.Service.Models.Mappings;
 
 
 namespace StatTrackr.WebApi
@@ -36,6 +36,9 @@ namespace StatTrackr.WebApi
             builder.RegisterType<GameController>().InstancePerRequest();
             builder.RegisterType<PlayerController>().InstancePerRequest();
             builder.RegisterType<TeamController>().InstancePerRequest();
+            builder.RegisterType<StatTypeController>().InstancePerRequest();
+            builder.RegisterType<PositionController>().InstancePerRequest();
+
             builder.RegisterType<AccountController>().InstancePerRequest();
 
             builder.RegisterModule(new RepositoryModule());

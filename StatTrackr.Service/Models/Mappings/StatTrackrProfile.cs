@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
 using StatTrackr.Model.Data;
-using StatTrackr.WebApi.Models.Request;
-using StatTrackr.WebApi.Models.Response;
+using StatTrackr.Service.Models.Request;
+using StatTrackr.Service.Models.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StatTrackr.WebApi.Models.Mappings
+namespace StatTrackr.Service.Models.Mappings
 {
     public class StatTrackrProfile : Profile
     {
