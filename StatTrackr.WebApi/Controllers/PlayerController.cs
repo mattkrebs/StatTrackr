@@ -14,6 +14,7 @@ using System.Web.Http.Description;
 
 namespace StatTrackr.WebApi.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class PlayerController : ApiController
     {
         IPlayerService _service;

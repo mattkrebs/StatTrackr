@@ -11,6 +11,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using StatTrackr.WebApi.Models;
 using StatTracker.Model.Data;
+using StatTrackr.Model;
 
 namespace StatTrackr.WebApi.Providers
 {

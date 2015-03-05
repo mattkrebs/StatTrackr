@@ -1,5 +1,8 @@
 namespace StatTrackr.Model.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using StatTracker.Model.Data;
     using StatTrackr.Model.Data;
     using System;
     using System.Data.Entity;
@@ -27,6 +30,29 @@ namespace StatTrackr.Model.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+
+            if (!context.Users.Any(x => x.Email == "admin@shakrlabs.com"))
+            {
+                var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
+                var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+                // Create Admin Role
+                string roleName = "admin";
+                IdentityResult roleResult;
+
+                // Check to see if Role Exists, if not create it
+                if (!RoleManager.RoleExists(roleName))
+                {
+                    roleResult = RoleManager.Create(new IdentityRole(roleName));
+                }
+                var adminUser = new ApplicationUser { UserName = "admin@shakrlabs.com" };
+                manager.Create(adminUser, "tacobell");
+
+                manager.AddToRole(adminUser.Id, "admin");
+            }
+
+
             if (context.Positions.Count() == 0)
             {
                 context.Positions.AddOrUpdate(

@@ -1,6 +1,7 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
+
 using StatTrackr.WebApi.Areas.HelpPage.ModelDescriptions;
 using StatTrackr.WebApi.Areas.HelpPage.Models;
 
@@ -9,6 +10,8 @@ namespace StatTrackr.WebApi.Areas.HelpPage.Controllers
     /// <summary>
     /// The controller that will handle requests for the help page.
     /// </summary>
+    /// 
+    [System.Web.Http.Authorize(Roles = "admin")]
     public class HelpController : Controller
     {
         private const string ErrorViewName = "Error";

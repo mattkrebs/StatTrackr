@@ -17,6 +17,7 @@ using StatTrackr.WebApi.Models;
 using StatTrackr.WebApi.Providers;
 using StatTrackr.WebApi.Results;
 using StatTracker.Model.Data;
+using StatTrackr.Model;
 
 namespace StatTrackr.WebApi.Controllers
 {

@@ -10,6 +10,7 @@ using System.Web.Http.Description;
 
 namespace StatTrackr.WebApi.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class PositionController : ApiController
     {
         IPositionService _service;
