@@ -32,25 +32,25 @@ namespace StatTrackr.Model.Migrations
             //
 
 
-            if (!context.Users.Any(x => x.Email == "admin@shakrlabs.com"))
-            {
-                var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
-                var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            //if (!context.Users.Any(x => x.Email == "admin@shakrlabs.com"))
+            //{
+            //    var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
+            //    var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-                // Create Admin Role
-                string roleName = "admin";
-                IdentityResult roleResult;
+            //    // Create Admin Role
+            //    string roleName = "admin";
+            //    IdentityResult roleResult;
 
-                // Check to see if Role Exists, if not create it
-                if (!RoleManager.RoleExists(roleName))
-                {
-                    roleResult = RoleManager.Create(new IdentityRole(roleName));
-                }
-                var adminUser = new ApplicationUser { UserName = "admin@shakrlabs.com" };
-                manager.Create(adminUser, "tacobell");
+            //    // Check to see if Role Exists, if not create it
+            //    if (!RoleManager.RoleExists(roleName))
+            //    {
+            //        roleResult = RoleManager.Create(new IdentityRole(roleName));
+            //    }
+            //    var adminUser = new ApplicationUser { UserName = "admin@shakrlabs.com" };
+            //    manager.Create(adminUser, "tacobell");
 
-                manager.AddToRole(adminUser.Id, "admin");
-            }
+            //    manager.AddToRole(adminUser.Id, "admin");
+            //}
 
 
             if (context.Positions.Count() == 0)

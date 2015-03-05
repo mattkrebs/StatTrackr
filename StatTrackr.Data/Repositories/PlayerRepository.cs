@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace StatTrackr.Data.Repositories
@@ -19,7 +20,8 @@ namespace StatTrackr.Data.Repositories
 
         public override IEnumerable<Player> GetAll()
         {
-            return _context.Set<Player>().Include(x => x.Position).AsEnumerable();
+            var user = Thread.CurrentPrincipal.Identity.Name;
+            return _context.Set<Player>().Include(x => x.Position).Where(x => x.CreatedBy == user).AsEnumerable();
         }
         public Player GetById(int id)
         {
