@@ -32,13 +32,13 @@ namespace StatTrackr.WebApi
             //Autofac Configuration
             var builder = new Autofac.ContainerBuilder();
 
-            builder.RegisterType<StatLineController>().InstancePerRequest();
+            
             builder.RegisterType<GameController>().InstancePerRequest();
             builder.RegisterType<PlayerController>().InstancePerRequest();
             builder.RegisterType<TeamController>().InstancePerRequest();
             builder.RegisterType<StatTypeController>().InstancePerRequest();
             builder.RegisterType<PositionController>().InstancePerRequest();
-
+            builder.RegisterType<StatLineController>().InstancePerRequest();
             builder.RegisterType<AccountController>().InstancePerRequest();
 
             builder.RegisterModule(new RepositoryModule());

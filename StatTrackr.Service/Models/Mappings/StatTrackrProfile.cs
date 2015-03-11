@@ -21,8 +21,11 @@ namespace StatTrackr.Service.Models.Mappings
             CreateMap<Game, GameResponse>();
 
             CreateMap<TeamRequest, Team>();
-            CreateMap<Team, TeamResponse>();  
-       
+            CreateMap<Team, TeamResponse>();
+
+            CreateMap<StatLineRequest, StatLine>();
+            CreateMap<StatLine, StatLineResponse>();  
+
            // //CreateMap<Player, PlayerViewModel>();
 
            // CreateMap<GameResponse, Game>().ReverseMap()

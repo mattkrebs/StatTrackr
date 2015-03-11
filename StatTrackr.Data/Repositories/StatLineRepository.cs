@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace StatTrackr.Data.Repositories
 {
-    public class StatLineRepsoitory : Repository<StatLine>, IStatLineRepository
+    public class StatLineRepository : Repository<StatLine>, IStatLineRepository
     {
-        public StatLineRepsoitory(DbContext context)
+        public StatLineRepository(DbContext context)
             : base(context)
         {
 
