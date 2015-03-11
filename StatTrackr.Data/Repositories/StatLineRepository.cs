@@ -33,6 +33,11 @@ namespace StatTrackr.Data.Repositories
             return _dbSet.Where(x => x.GameId == id);
         }
 
+        public override StatLine Add(StatLine entity){
+            entity.StatLineId = Guid.NewGuid();
+            return _dbSet.Add(entity);
+        }
+
         
     }
 }

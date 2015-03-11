@@ -9,7 +9,7 @@ namespace StatTrackr.Service.Models.Request
 {
     public class StatLineRequest
     {
-        public Guid StatLineId { get; set; }
+        
         [Required]
         public int GameId { get; set; }
         [Required]

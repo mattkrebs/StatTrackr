@@ -32,7 +32,7 @@ namespace StatTrackr.Model.Migrations
             //
 
 
-            //if (!context.Users.Any(x => x.Email == "admin@shakrlabs.com"))
+            //if (!context.Users.Any(x => x.UserName == "krebs@takestats.com"))
             //{
             //    var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
             //    var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
@@ -41,52 +41,52 @@ namespace StatTrackr.Model.Migrations
             //    string roleName = "admin";
             //    IdentityResult roleResult;
 
-            //    // Check to see if Role Exists, if not create it
+            //    //Check to see if Role Exists, if not create it
             //    if (!RoleManager.RoleExists(roleName))
             //    {
             //        roleResult = RoleManager.Create(new IdentityRole(roleName));
             //    }
-            //    var adminUser = new ApplicationUser { UserName = "admin@shakrlabs.com" };
+            //    var adminUser = new ApplicationUser { UserName = "krebs@takestats.com" };
             //    manager.Create(adminUser, "tacobell");
 
             //    manager.AddToRole(adminUser.Id, "admin");
             //}
 
 
-            if (context.Positions.Count() == 0)
-            {
-                context.Positions.AddOrUpdate(
-                    new Position { Name = "Point Gaurd", PositionId = 1 },
-                    new Position { Name = "Shooting Guard", PositionId = 2 },
-                    new Position { Name = "Small Forward", PositionId = 3 },
-                    new Position { Name = "Power Forward", PositionId = 4 },
-                    new Position { Name = "Center", PositionId = 5 },
-                    new Position { Name = "Guard", PositionId = 6 },
-                    new Position { Name = "Forward", PositionId = 7 });
-            }
+            //if (context.Positions.Count() == 0)
+            //{
+            //    context.Positions.AddOrUpdate(
+            //        new Position { Name = "Point Gaurd", PositionId = 1 },
+            //        new Position { Name = "Shooting Guard", PositionId = 2 },
+            //        new Position { Name = "Small Forward", PositionId = 3 },
+            //        new Position { Name = "Power Forward", PositionId = 4 },
+            //        new Position { Name = "Center", PositionId = 5 },
+            //        new Position { Name = "Guard", PositionId = 6 },
+            //        new Position { Name = "Forward", PositionId = 7 });
+            //}
 
-            if (context.StatTypes.Count() == 0)
-            {
-                context.StatTypes.AddOrUpdate(
-                    new StatType { Name="Free Throw Made", StatTypeId=1, Value=1 },
-                    new StatType { Name="Free Throw Missed", StatTypeId=2, Value=1 },
-                    new StatType { Name="Defensive Foul", StatTypeId=3, Value=1 },
-                    new StatType { Name="Offensive Foul", StatTypeId=4, Value=1 },
-                    new StatType { Name="Technical Foul", StatTypeId=5, Value=1 },
-                    new StatType { Name="Intentional Foul", StatTypeId=6, Value=1 },
-                    new StatType { Name="2 Point FG Made", StatTypeId=7, Value=2 },
-                    new StatType { Name="2 Point FG Missed", StatTypeId=8, Value=1 },
-                    new StatType { Name="3 Point FG Made", StatTypeId=9, Value=1 },
-                    new StatType { Name="3 Point FG Missed", StatTypeId=10, Value=3 },
-                    new StatType { Name="Offensive Rebound", StatTypeId=1, Value=1 },
-                    new StatType { Name="Defensive Rebound", StatTypeId=1, Value=1 },
-                    new StatType { Name="Assist", StatTypeId=1, Value=1 },
-                    new StatType { Name="Turnover", StatTypeId=1, Value=1 },
-                    new StatType { Name="Steal", StatTypeId=1, Value=1 },
-                    new StatType { Name="Substitute In", StatTypeId=1, Value=1 },
-                    new StatType { Name="Substitute Out", StatTypeId=1, Value=1 }
-                    );
-            }
+            //if (context.StatTypes.Count() == 0)
+            //{
+            //    context.StatTypes.AddOrUpdate(
+            //        new StatType { Name="Free Throw Made", StatTypeId=1, Value=1 },
+            //        new StatType { Name="Free Throw Missed", StatTypeId=2, Value=1 },
+            //        new StatType { Name="Defensive Foul", StatTypeId=3, Value=1 },
+            //        new StatType { Name="Offensive Foul", StatTypeId=4, Value=1 },
+            //        new StatType { Name="Technical Foul", StatTypeId=5, Value=1 },
+            //        new StatType { Name="Intentional Foul", StatTypeId=6, Value=1 },
+            //        new StatType { Name="2 Point FG Made", StatTypeId=7, Value=2 },
+            //        new StatType { Name="2 Point FG Missed", StatTypeId=8, Value=1 },
+            //        new StatType { Name="3 Point FG Made", StatTypeId=9, Value=1 },
+            //        new StatType { Name="3 Point FG Missed", StatTypeId=10, Value=3 },
+            //        new StatType { Name="Offensive Rebound", StatTypeId=1, Value=1 },
+            //        new StatType { Name="Defensive Rebound", StatTypeId=1, Value=1 },
+            //        new StatType { Name="Assist", StatTypeId=1, Value=1 },
+            //        new StatType { Name="Turnover", StatTypeId=1, Value=1 },
+            //        new StatType { Name="Steal", StatTypeId=1, Value=1 },
+            //        new StatType { Name="Substitute In", StatTypeId=1, Value=1 },
+            //        new StatType { Name="Substitute Out", StatTypeId=1, Value=1 }
+            //        );
+            //}
         }
     }
 }

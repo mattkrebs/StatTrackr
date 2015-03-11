@@ -9,20 +9,22 @@ using System.Threading.Tasks;
 
 namespace StatTrackr.Model.Data
 {
-    public class StatLine : EntityBase
+    public partial class StatLine : EntityBase
     {
+        
+        
         [Key]
-        public Guid StatLineId { get; set; }
+        public virtual Guid StatLineId { get; set; }
         [ForeignKey("GameId")]
-        public Game Game { get; set; }
+        public virtual Game Game { get; set; }
         public int GameId { get; set; }
         public int StatTypeId { get; set; }
         [ForeignKey("StatTypeId")]
-        public StatType StatType { get; set; }
+        public virtual StatType StatType { get; set; }
         public decimal ClockTime { get; set; }
         public int Period { get; set; }
         [ForeignKey("PlayerId")]
-        public Player Player { get; set; }
+        public virtual Player Player { get; set; }
         public int PlayerId { get; set; }
         public string ShotLocation { get; set; }
     }

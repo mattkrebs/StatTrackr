@@ -103,6 +103,14 @@
     <Compile Include="Migrations\201502261753444_Add Stats2.Designer.cs">
       <DependentUpon>201502261753444_Add Stats2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503110407323_Stat identity.cs" />
+    <Compile Include="Migrations\201503110407323_Stat identity.Designer.cs">
+      <DependentUpon>201503110407323_Stat identity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503110501014_Stat Line Id no identity.cs" />
+    <Compile Include="Migrations\201503110501014_Stat Line Id no identity.Designer.cs">
+      <DependentUpon>201503110501014_Stat Line Id no identity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatTrackrContext.cs" />
@@ -120,6 +128,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502261753444_Add Stats2.resx">
       <DependentUpon>201502261753444_Add Stats2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503110407323_Stat identity.resx">
+      <DependentUpon>201503110407323_Stat identity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503110501014_Stat Line Id no identity.resx">
+      <DependentUpon>201503110501014_Stat Line Id no identity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
