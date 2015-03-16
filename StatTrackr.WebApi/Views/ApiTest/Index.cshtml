@@ -2,53 +2,27 @@
     ViewBag.Title = "Index";
 }
 
+<script type="text/javascript">
+    //var myApp = angular.module('myApp', []);
+
+    //myApp.controller('mainController', ['$scope', '$http', function ($scope, $http) {
+    //    var people = [{ 'Name': 'Matt Krebs' }, { 'Name': 'Matt Krebs' }, { 'Name': 'Matt Krebs' }, { 'Name': 'Matt Krebs' }];
+    //    $scope.people = people;
+       
+    //    $http.get('/api/Game').success(function (data) {
+    //        var hometeam = [];
+    //        var awayteam = [];
+
+    //    });
+
+    //}]);
+
+
+
+
+</script>
 <h2>Demo </h2>
-<div class="row">
-    <div class="col-md-4 text-center"><h2>30</h2></div>
-    <div class="col-md-4 text-center"><h2>19:29</h2></div>
-    <div class="col-md-4 text-center"><h2>30</h2></div>
-</div>
-<div class="row">
-    <div class="col-md-4  text-center">
-        <div class="btn-group-vertical text-center" data-toggle="buttons">
-            <label class="btn btn-lg btn-primary active">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked>Matt Krebs
-            </label>
-            <label class="btn btn-lg  btn-primary">
-                <input type="radio" name="options" id="option2" autocomplete="off">Matt Krebs
-            </label>
-            <label class="btn btn-lg  btn-primary">
-                <input type="radio" name="options" id="option3" autocomplete="off">Matt Krebs
-            </label>
-        </div>
-
-    </div>
-    <div class="col-md-4  text-center">
-        <button type="button" class="btn btn-default">2 Pt Made</button>
-        <button type="button" class="btn btn-default">2 Pt Missed</button>
-        <button type="button" class="btn btn-default">3 Pt Made</button>
-        <button type="button" class="btn btn-default">3 Pt Missed</button>
-        <button type="button" class="btn btn-default">Free Throw made</button>
-        <button type="button" class="btn btn-default">Free Throw Missed</button>
-        <button type="button" class="btn btn-default">Off Foul</button>
-        <button type="button" class="btn btn-default">Def Foul</button>
-        <button type="button" class="btn btn-default">Assist</button>
-        <button type="button" class="btn btn-default">Steal</button>
-        <button type="button" class="btn btn-default">Off Rebound</button>
-        <button type="button" class="btn btn-default">Def Rebound</button>
-
-    </div>
-    <div class="col-md-4  text-center">
-        <div class="btn-group-vertical" data-toggle="buttons">
-            <label class="btn btn-lg btn-primary active">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked>Matt Krebs
-            </label>
-            <label class="btn btn-lg  btn-primary">
-                <input type="radio" name="options" id="option2" autocomplete="off">Matt Krebs
-            </label>
-            <label class="btn btn-lg  btn-primary">
-                <input type="radio" name="options" id="option3" autocomplete="off">Matt Krebs
-            </label>
-        </div>
+<div class="container">
+    <div data-ng-view="">
     </div>
 </div>
