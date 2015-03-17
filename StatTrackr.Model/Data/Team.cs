@@ -15,7 +15,7 @@ namespace StatTrackr.Model.Data
         public string State { get; set; }
         public virtual ICollection<Player> Players { get; set; }
 
-
+        public string Country { get; set; }
 
     }
 }

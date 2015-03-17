@@ -1,14 +1,19 @@
 ﻿'use strict';
-app.controller('gameController', ['$scope', 'gameService', function ($scope, gameService) {
+app.controller('gameController', ['$scope', 'gameService', '$route', function ($scope, gameService, $route) {
 
-    $scope.orders = "";
+    $scope.game = {};
 
-    gameService.getGame(1).then(function (results) {
-
+    gameService.getGameById($route.current.params.id).then(function (results) {
+        
         $scope.game = results.data;
 
     }, function (error) {
         //alert(error.data.message);
     });
+
+
+    $scope.buttonClick = function () {
+        console.log($scope.game);
+    };
 
 }]);

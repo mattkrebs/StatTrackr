@@ -284,6 +284,7 @@
     <Content Include="Scripts\controllers\indexcontroller.js" />
     <Content Include="Scripts\controllers\loginController.js" />
     <Content Include="Scripts\controllers\signupController.js" />
+    <Content Include="Scripts\controllers\teamController.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -298,10 +299,13 @@
     <Content Include="Scripts\services\authInterceptorService.js" />
     <Content Include="Scripts\services\authService.js" />
     <Content Include="Scripts\services\gameService.js" />
+    <Content Include="Scripts\services\tokensManagerService.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.12.1.min.js" />
+    <Content Include="Templates\game.html" />
     <Content Include="Templates\home.html" />
     <Content Include="Templates\login.html" />
     <Content Include="Templates\signup.html" />
+    <Content Include="Templates\team.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
