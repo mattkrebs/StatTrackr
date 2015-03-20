@@ -29,15 +29,16 @@ app.factory('gameService', ['$http','ngAuthSettings',  function ($http, ngAuthSe
         });
     };
 
+    //Team Functions
     var _saveTeam = function (team) {
         if (team.TeamId == null) {
-            $http.post(serviceBase + 'api/team/', team).then(function (response) {
-                return respond;
+            return $http.post(serviceBase + 'api/team/', team).then(function (results) {
+                return results;
             }, function (error) { return error;});
 
         } else {
-            $http.put(serviceBase + 'api/team/' + team.TeamId, team).then(function (response) {
-                return respond;
+            return $http.put(serviceBase + 'api/team/' + team.TeamId, team).then(function (results) {
+                return results;
             }, function (error) { return error; });
         }
     };
@@ -46,6 +47,25 @@ app.factory('gameService', ['$http','ngAuthSettings',  function ($http, ngAuthSe
 
     gameServiceFactory.getTeamById = _getTeamById;
     gameServiceFactory.saveTeam = _saveTeam;
+
+
+    //Player Functions
+
+    var _addPlayerToTeam = function (teamid, player) {
+        return $http.post(serviceBase + 'api/addplayertoteam/' + teamid, player).then(function (results) {
+            return results;
+        }, function (error) { return error; });
+    }
+
+    var _allPlayers = function () {
+        return $http.get(serviceBase + 'api/player/').then(function (results) {
+            return results;
+        }, function (error) { return error; });
+    }
+
+    gameServiceFactory.addPlayerToTeam = _addPlayerToTeam;
+    gameServiceFactory.getPlayers = _allPlayers;
+
 
     return gameServiceFactory;
 }]);

@@ -304,8 +304,10 @@
     <Content Include="Templates\game.html" />
     <Content Include="Templates\home.html" />
     <Content Include="Templates\login.html" />
+    <Content Include="Templates\newPlayerModal.html" />
     <Content Include="Templates\signup.html" />
     <Content Include="Templates\team.html" />
+    <Content Include="Templates\addPlayerModal.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
