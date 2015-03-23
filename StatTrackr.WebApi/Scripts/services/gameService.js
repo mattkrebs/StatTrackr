@@ -57,14 +57,14 @@ app.factory('gameService', ['$http','ngAuthSettings',  function ($http, ngAuthSe
         }, function (error) { return error; });
     }
 
-    var _allPlayers = function () {
-        return $http.get(serviceBase + 'api/player/').then(function (results) {
+    var _allPlayers = function (id) {
+        return $http.get(serviceBase + 'api/GetAvailablePlayers/' + id).then(function (results) {
             return results;
         }, function (error) { return error; });
     }
 
     gameServiceFactory.addPlayerToTeam = _addPlayerToTeam;
-    gameServiceFactory.getPlayers = _allPlayers;
+    gameServiceFactory.getAvailablePlayers = _allPlayers;
 
 
     return gameServiceFactory;

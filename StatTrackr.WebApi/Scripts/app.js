@@ -1,7 +1,7 @@
 ﻿var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'ui.bootstrap']);
 app.config(function ($routeProvider) {
 
-    $routeProvider.when("/home", {
+    $routeProvider.when("/home/:id?", {
         controller: "homeController",
         templateUrl: "/Templates/home.html"
     });

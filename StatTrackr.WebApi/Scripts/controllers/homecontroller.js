@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('homeController', ['$scope', 'gameService', function ($scope, gameService) {
+app.controller('homeController', ['$scope', 'gameService', function ($scope, gameService, id) {
     $scope.currentGame = null;
     $scope.games = [];
     

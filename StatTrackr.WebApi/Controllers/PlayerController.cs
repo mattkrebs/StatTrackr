@@ -40,7 +40,18 @@ namespace StatTrackr.WebApi.Controllers
 
             return Ok(playerExisting);
         }
+        // GET: api/Player/5        
+        [ResponseType(typeof(IEnumerable<PlayerResponse>))]
+        [Route("api/GetAvailablePlayers/{teamId}")]
+        public IHttpActionResult GetAvailablePlayers(int teamId)
+        {
+            var players = _service.GetAvailablePlayersByTeamId(teamId);
 
+            if (players == null)
+                return NotFound();
+
+            return Ok(players);
+        }
         // POST: api/Player
         [ResponseType(typeof(PlayerResponse))]
         public IHttpActionResult Post([FromBody]PlayerRequest player)

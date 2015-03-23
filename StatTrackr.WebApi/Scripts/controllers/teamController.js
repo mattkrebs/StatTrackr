@@ -41,7 +41,7 @@ app.controller('teamController', ['$scope', 'gameService', '$route', '$modal', f
                 size: size,
                 controller: function ($scope, $modalInstance, team) {
                     $scope.team = team;
-                    gameService.getPlayers().then(function (result) {
+                    gameService.getAvailablePlayers(team.TeamId).then(function (result) {
                         $scope.players = result.data;
 
                         $scope.selected = {

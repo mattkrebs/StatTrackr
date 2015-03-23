@@ -16,11 +16,13 @@ namespace StatTrackr.Service.Services
     {
         IUnitOfWork _unitOfWork;
         IPlayerRepository _repository;
+        ITeamRepository _teamRepository;
 
-        public PlayerService(IUnitOfWork unitOfWork, IPlayerRepository playerRespository)
+        public PlayerService(IUnitOfWork unitOfWork, IPlayerRepository playerRespository, ITeamRepository teamRepository)
         {
             _unitOfWork = unitOfWork;
             _repository = playerRespository;
+            _teamRepository = teamRepository;
         }
         public IEnumerable<PlayerResponse> GetAll()
         {
@@ -29,6 +31,18 @@ namespace StatTrackr.Service.Services
         public PlayerResponse GetById(int id)
         {
             return Mapper.Map<PlayerResponse>(_repository.GetById(id));
+        }
+        public IEnumerable<PlayerResponse> GetAvailablePlayersByTeamId(int teamId)
+        {
+            var teamPlayers = _teamRepository.GetById(teamId);
+            var players = _repository.GetAll();
+
+            var query = from t in players
+                        where !(from p in teamPlayers.Players
+                                select p.PlayerId).Contains(t.PlayerId)
+                        select t;
+
+            return Mapper.Map<IEnumerable<PlayerResponse>>(query);
         }
         public PlayerResponse Create(PlayerRequest request)
         {
