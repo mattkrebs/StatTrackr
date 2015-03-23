@@ -13,6 +13,6 @@ namespace StatTrackr.Service.Models.Response
         public string CoachName { get; set; }
         public string Hometown { get; set; }
         public string State { get; set; }
-        public List<PlayerResponse> Players { get; set; }
+        public IEnumerable<PlayerResponse> Players { get; set; }
     }
 }

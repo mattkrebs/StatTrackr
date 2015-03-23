@@ -23,7 +23,7 @@ namespace StatTrackr.Data.Repositories
         }
         public Game GetById(int id)
         {
-            return _dbSet.Include(x => x.HomeTeam).Where(x => x.GameId == id).FirstOrDefault();
+            return _dbSet.Include(x => x.HomeTeam).Include(x => x.AwayTeam).Where(x => x.GameId == id).FirstOrDefault();
         }
     }
 }
