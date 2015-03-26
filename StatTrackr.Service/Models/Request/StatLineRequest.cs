@@ -19,6 +19,8 @@ namespace StatTrackr.Service.Models.Request
         [Required]
         public int PlayerId { get; set; }
         public string ShotLocation { get; set; }
+        [Required]
+        public int TeamId { get; set; }
 
 
     }

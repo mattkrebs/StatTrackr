@@ -1,17 +1,23 @@
 ﻿'use strict';
 app.controller('teamController', ['$scope', 'gameService', '$route', '$modal', function ($scope, gameService, $route, $modal) {
     $scope.master = {};
-    $scope.team = {};
+    $scope.team = null;
     $scope.player = {};
-
+    $scope.teams = [];
 
     $scope.showPlayerForm = false;
-
-    gameService.getTeamById($route.current.params.id).then(function (results) {
-        $scope.team = results.data;
-    }, function (error) {
-        alert(error.data.message);
-    });
+    if ($route.current.params.id) {
+        gameService.getTeamById($route.current.params.id).then(function (results) {
+            $scope.team = results.data;
+        }, function (error) {
+            alert(error.data.message);
+        });
+    } else {
+        $scope.team = null;
+        gameService.getTeams().then(function (results) {
+            $scope.teams = results.data;
+        });
+    }
 
     
 

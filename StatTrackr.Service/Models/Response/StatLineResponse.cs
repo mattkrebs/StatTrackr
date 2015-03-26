@@ -14,8 +14,11 @@ namespace StatTrackr.Service.Models.Response
         public StatType StatType { get; set; }
         public decimal ClockTime { get; set; }
         public int Period { get; set; }      
-        public int PlayerId { get; set; }
+        public PlayerResponse Player { get; set; }
         public string ShotLocation { get; set; }
+        public int TeamId { get; set; }
+
+        public string StatLineNotes { get; set; }
 
     }
 }

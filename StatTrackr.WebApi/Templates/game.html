@@ -1,37 +1,50 @@
 ﻿<div class="row">
-    <div class="col-md-4 text-center"><h2>30</h2></div>
-    <div class="col-md-4 text-center"><h2>19:29</h2></div>
-    <div class="col-md-4 text-center"><h2>30</h2></div>
+    <div class="col-md-4 text-center"><h2>{{gameStats.HomeStatTotals.Score}}</h2></div>
+    <div class="col-md-4 text-center"><h1><timer autostart='false' interval="1000" countdown="countdown">{{mminutes}}:{{sseconds}}</timer></h1></div>
+    <div class="col-md-4 text-center"><h2>{{gameStats.AwayStatTotals.Score}}</h2></div>
 </div>
 <div class="row">
-    <div class="col-md-4  text-center">
-        <div class="btn-group-vertical text-center" data-toggle="buttons">
-            <label class="btn btn-lg btn-primary active" ng-repeat="person in game.HomeTeam.Players">
-                <input type="radio" name="options" id="option1" autocomplete="off">{{person.FirstName}}
-            </label>
-        </div>
+    <div class="col-md-4 text-center"><h2>Team Fouls {{gameStats.HomeStatTotals.Fouls}}</h2></div>
+    <div class="col-md-4 text-center">
+        <button ng-click="startTimer()" class="btn btn-default btn-success" ng-disabled="timerRunning">Start Clock</button>
+        <button ng-click="stopTimer()" class="btn btn-default btn-danger" ng-disabled="!timerRunning">Stop Clock</button>
+    </div>
+    <div class="col-md-4 text-center"><h2>Team Fouls {{gameStats.AwayStatTotals.Fouls}}</h2></div>
 
+</div>
+<div class="row">
+    <div class="col-md-4  text-center">       
+        <div class="btn-group-vertical text-center">
+            <label class="btn btn-primary" ng-repeat="person in game.HomeTeam.Players" ng-model="player.selected" btn-radio="person">{{person.Number}} {{person.FirstName}} {{person.LastName}} {{person.TeamId}}</label>
+        </div>
+    </div>   
+    <div class="col-md-4  text-center">
+        <button type="button" class="btn btn-default" ng-click="takeStat(14)">2 Pt Made</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(15)">2 Pt Missed</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(16)">3 Pt Made</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(17)">3 Pt Missed</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(1)">Free Throw made</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(9)">Free Throw Missed</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(11)">Off Foul</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(10)">Def Foul</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(4)">Assist</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(5)">Turnover</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(6)">Steal</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(11)">Off Rebound</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(12)">Def Rebound</button>
     </div>
     <div class="col-md-4  text-center">
-        <button type="button" class="btn btn-default" ng-click="buttonClick()">2 Pt Made</button>
-        <button type="button" class="btn btn-default">2 Pt Missed</button>
-        <button type="button" class="btn btn-default">3 Pt Made</button>
-        <button type="button" class="btn btn-default">3 Pt Missed</button>
-        <button type="button" class="btn btn-default">Free Throw made</button>
-        <button type="button" class="btn btn-default">Free Throw Missed</button>
-        <button type="button" class="btn btn-default">Off Foul</button>
-        <button type="button" class="btn btn-default">Def Foul</button>
-        <button type="button" class="btn btn-default">Assist</button>
-        <button type="button" class="btn btn-default">Steal</button>
-        <button type="button" class="btn btn-default">Off Rebound</button>
-        <button type="button" class="btn btn-default">Def Rebound</button>
-
-    </div>
-    <div class="col-md-4  text-center">
-        <div class="btn-group-vertical text-center" data-toggle="buttons">
-            <label class="btn btn-lg btn-primary active" data-ng-repeat="person in game.AwayTeam.Players">
-                <input type="radio" name="options" id="option1" autocomplete="off">{{person.FirstName}}
-            </label>
+        <div class="btn-group-vertical text-center">
+            <label class="btn btn-primary" ng-repeat="person in game.AwayTeam.Players" ng-model="player.selected" btn-radio="person">{{person.Number}} {{person.FirstName}} {{person.LastName}} {{person.TeamId}}</label>
         </div>
     </div>
+</div>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4"><ul>
+    <li ng-repeat="line in gameStats.GameStatLines">{{line.StatType.Name }} - {{line.Player.FirstName}} {{line.ClockTime}}</li>
+</ul>
+</div>
+    <div class="col-md-4"></div>
+
 </div>

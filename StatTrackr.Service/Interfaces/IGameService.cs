@@ -13,6 +13,8 @@ namespace StatTrackr.Service.Interfaces
         bool Delete(int id);
         GameResponse Update(int id, GameRequest entity);
 
+        GameStatsResponse GetGameStats(int id);
+
 
     }
 }

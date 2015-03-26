@@ -32,4 +32,5 @@ app.controller('homeController', ['$scope', 'gameService','$route', function ($s
     });
   
 
+
 }]);

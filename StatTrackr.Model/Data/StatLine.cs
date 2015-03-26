@@ -27,5 +27,9 @@ namespace StatTrackr.Model.Data
         public virtual Player Player { get; set; }
         public int PlayerId { get; set; }
         public string ShotLocation { get; set; }
+        public int TeamId { get; set; }
+        [ForeignKey("TeamId")]
+        public virtual Team Team { get; set; }
+        public string StatNotes { get; set; }
     }
 }

@@ -5,7 +5,6 @@ app.factory('gameService', ['$http','ngAuthSettings',  function ($http, ngAuthSe
     var gameServiceFactory = {};
 
     var _getGames = function () {
-
         return $http.get(serviceBase + 'api/game/').then(function (results) {
             return results;
         });
@@ -19,8 +18,6 @@ app.factory('gameService', ['$http','ngAuthSettings',  function ($http, ngAuthSe
 
     gameServiceFactory.getGames = _getGames;
     gameServiceFactory.getGameById = _getGameById;
-
-
 
 
     var _getTeamById = function (id) {
@@ -43,11 +40,15 @@ app.factory('gameService', ['$http','ngAuthSettings',  function ($http, ngAuthSe
         }
     };
 
-   
+    var _getTeams = function () {
+        return $http.get(serviceBase + 'api/team/').then(function (results) {
+            return results;
+        });
+    }
 
     gameServiceFactory.getTeamById = _getTeamById;
     gameServiceFactory.saveTeam = _saveTeam;
-
+    gameServiceFactory.getTeams = _getTeams;
 
     //Player Functions
 
@@ -67,5 +68,22 @@ app.factory('gameService', ['$http','ngAuthSettings',  function ($http, ngAuthSe
     gameServiceFactory.getAvailablePlayers = _allPlayers;
 
 
+    //Game Play Functions
+
+    var _takeStat = function (stat) {
+        return $http.post(serviceBase + 'api/statline/',stat).then(function (results) {
+            return results;
+        }, function (error) { return error; });
+    }
+
+    var _getGameStatsByGameId = function (id) {
+        return $http.get(serviceBase + 'api/GetStatsForGame/' + id).then(function (results) {
+            return results;
+        });
+    };
+
+
+    gameServiceFactory.takeStat = _takeStat;
+    gameServiceFactory.getGameStats = _getGameStatsByGameId;
     return gameServiceFactory;
 }]);

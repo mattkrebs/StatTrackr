@@ -1,4 +1,4 @@
-﻿var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'ui.bootstrap']);
+﻿var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'ui.bootstrap', 'timer']);
 app.config(function ($routeProvider) {
 
     $routeProvider.when("/home/:id?", {
@@ -16,11 +16,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/Templates/signup.html"
     });
 
-    $routeProvider.when("/game/:id", {
+    $routeProvider.when("/game/:id?", {
         controller: "gameController",
         templateUrl: "/Templates/game.html"
     });
-    $routeProvider.when("/team/:id", {
+    $routeProvider.when("/team/:id?", {
         controller: "teamController",
         templateUrl: "/Templates/team.html"
     });
@@ -29,7 +29,7 @@ app.config(function ($routeProvider) {
 });
 
 
-var serviceBase = 'http://localhost:44272/';
+var serviceBase = '/';
 //var serviceBase = 'http://stattrackerwebapi.azurewebsites.net/';
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,

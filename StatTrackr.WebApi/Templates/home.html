@@ -3,6 +3,7 @@
         <div class="btn-group-vertical">
             <h3>Select Game</h3>
             <a ng-href="#/home/{{game.GameId}}" ng-click="setGame(game.GameId)" class="btn btn-default" data-ng-repeat="game in games"> {{ game.HomeTeam.Name }} v. {{game.AwayTeam.Name}}</a>            
+            <a ng-click="" class="btn btn-default">New</a>           
         </div>
     </div>
     <div class="col-md-6" ng-show="currentGame != null">
@@ -20,7 +21,7 @@
         </div>
         <div class="col-md-8"></div>
         <div class="col-md-4">
-            <a href="#/game" data-ng-hide="currentGame == null" class="btn btn-default">Edit</a>
+            <a href="#/game/{{currentGame.GameId}}" data-ng-hide="currentGame == null" class="btn btn-default">Edit</a>
             <a href="#/game/{{currentGame.GameId}}" data-ng-hide="currentGame == null" class="btn btn-primary">Start</a>
 
         </div>

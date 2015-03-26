@@ -66,6 +66,13 @@ namespace StatTrackr.WebApi.Controllers
 
             return Ok(response);
         }
+        [ResponseType(typeof(IEnumerable<GameStatsResponse>))]
+        [Route("api/GetStatsForGame/{id}")]
+        public IHttpActionResult GetStatsForGame(int id)
+        {
+            var response = _service.GetGameStats(id);
+            return Ok(response);
+        }
 
         // DELETE: api/Game/5
         public IHttpActionResult Delete(int id)

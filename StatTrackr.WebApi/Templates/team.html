@@ -1,13 +1,20 @@
 ﻿<div class="row">
+    <div class="col-md-6" ng-show="team == null">
+        <h3>Manage Teams</h3>
+        <div class="btn-group-vertical">           
+            <a ng-href="#/team/{{t.TeamId}}" ng-click="team == t" class="btn btn-default" data-ng-repeat="t in teams"> {{ t.Name }} </a>            
+        </div>
+    </div>
     <div class="col-md-6">
         <form class="form-horizontal">
-            <fieldset>
-              
-                <input type="hidden" id="inputId" placeholder="Email" ng-model="team.TeamId">
+            <h3 ng-show="team == null">New Team</h3>
+            <h3 ng-show="team != null">Edit Team</h3>
+            <fieldset>              
+                <input type="hidden" id="inputId" ng-model="team.TeamId">
                 <div class="form-group">
                     <label for="inputName" class="col-lg-2 control-label">Team Name</label>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control" id="inputName" placeholder="Email" ng-model="team.Name">
+                        <input type="text" class="form-control" id="inputName" placeholder="Team Name" ng-model="team.Name">
                     </div>
                 </div>
                 <div class="form-group">
@@ -30,14 +37,14 @@
                 </div>                
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button type="reset" ng-click="reset()" class="btn btn-default">Cancel</button>
+                        <a ng-href="#/team" class="btn btn-default">Cancel</a>
                         <button type="submit" ng-click="update(team)" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </fieldset>
         </form>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" ng-show="team != null">
         <h3>Players</h3>
         <a href="#/player/{{player.PlayerId}}" data-ng-repeat="player in team.Players" class="btn btn-default btn-lg btn-block">{{player.FirstName}} {{player.LastName}}</a>
         <button ng-click="openNewTeamModal('sm')" class="btn btn-default btn-lg col-md-6">+ Add New Player</button><button ng-click="openAddTeamModal('sm')" class="btn btn-default btn-lg col-md-6">+ Add Player</button>

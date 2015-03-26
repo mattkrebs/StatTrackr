@@ -254,6 +254,8 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\accountService.js" />
     <Content Include="Scripts\angular-local-storage.js" />
+    <Content Include="Scripts\angular-timer.js" />
+    <Content Include="Scripts\angular-timer.min.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -285,6 +287,7 @@
     <Content Include="Scripts\controllers\loginController.js" />
     <Content Include="Scripts\controllers\signupController.js" />
     <Content Include="Scripts\controllers\teamController.js" />
+    <Content Include="Scripts\humanize-duration.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -294,6 +297,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\loading-bar.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\services\authInterceptorService.js" />
@@ -301,9 +306,11 @@
     <Content Include="Scripts\services\gameService.js" />
     <Content Include="Scripts\services\tokensManagerService.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.12.1.min.js" />
+    <Content Include="Templates\addTeamModel.html" />
     <Content Include="Templates\game.html" />
     <Content Include="Templates\home.html" />
     <Content Include="Templates\login.html" />
+    <Content Include="Templates\newTeamModel.html" />
     <Content Include="Templates\newPlayerModal.html" />
     <Content Include="Templates\signup.html" />
     <Content Include="Templates\team.html" />

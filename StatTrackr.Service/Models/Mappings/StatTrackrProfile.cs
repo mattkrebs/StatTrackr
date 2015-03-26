@@ -26,6 +26,9 @@ namespace StatTrackr.Service.Models.Mappings
             CreateMap<StatLineRequest, StatLine>();
             CreateMap<StatLine, StatLineResponse>();  
 
+            //for cloning
+            CreateMap<PlayerResponse, PlayerResponse>();
+
            // //CreateMap<Player, PlayerViewModel>();
 
            // CreateMap<GameResponse, Game>().ReverseMap()

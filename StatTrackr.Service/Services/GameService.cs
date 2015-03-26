@@ -29,7 +29,29 @@ namespace StatTrackr.Service.Services
         }
         public GameResponse GetById(int id)
         {
-            return Mapper.Map<GameResponse>(_repository.GetById(id));
+            var response = Mapper.Map<GameResponse>(_repository.GetById(id));
+            response.AwayTeam.Players.ToList().ForEach(x => x.TeamId = response.AwayTeam.TeamId);
+            //response.HomeTeam.Players.ToList().ForEach(x=> x.TeamId = response.HomeTeam.TeamId);
+
+            var newlist = new List<PlayerResponse>();
+            foreach (var item in response.HomeTeam.Players)
+            {
+                
+                var player = Mapper.Map<PlayerResponse, PlayerResponse>(item);
+                //player.PlayerId = item.PlayerId;
+                //player.FirstName = item.FirstName;
+                //player.LastName = item.LastName;
+                //player.Number = item.Number;
+                //player.PositionId = item.PositionId;
+                //player.Age = item.Age;
+                
+                player.TeamId = response.HomeTeam.TeamId;
+                newlist.Add(player);
+            }
+            
+            response.HomeTeam.Players = newlist;
+            
+            return response;
         }
         public GameResponse Create(GameRequest request)
         {
@@ -65,5 +87,18 @@ namespace StatTrackr.Service.Services
 
             return true;
         }
+
+        public GameStatsResponse GetGameStats(int id)
+        {
+            var entity = _repository.GetById(id);
+
+            var game = new GameStatsResponse(entity);
+
+            return game;
+
+
+
+        }
+
     }
 }
