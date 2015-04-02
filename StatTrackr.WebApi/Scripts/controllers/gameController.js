@@ -10,6 +10,8 @@ app.controller('gameController', ['$scope', 'gameService', '$route', function ($
     $scope.homeTeam = [];
     $scope.awayTeam = [];
 
+    $scope.currentPeriod = 1;
+
     $scope.$broadcast('timer-set-countdown', 1300);
     $scope.startTimer = function () {
         $scope.$broadcast('timer-start');
@@ -29,7 +31,10 @@ app.controller('gameController', ['$scope', 'gameService', '$route', function ($
     $scope.loadGame = function () {
         gameService.getGameStats($route.current.params.id).then(function (results) {
             $scope.gameStats = results.data;
-            $scope.$broadcast('timer-set-countdown', $scope.gameStats.ClockTime);
+            if (!$scope.timerRunning) {
+                $scope.$broadcast('timer-set-countdown', $scope.gameStats.ClockTime);
+                $scope.gameClock = $scope.gameStats.ClockTime;
+            }
            // $scope.$broadcast('timer-reset');
 
         }, function (error) {
@@ -56,7 +61,8 @@ app.controller('gameController', ['$scope', 'gameService', '$route', function ($
             'StatTypeId': statId,
             'ClockTime': $scope.gameClock,
             'PlayerId': $scope.player.selected.PlayerId,
-            'TeamId': $scope.player.selected.TeamId
+            'TeamId': $scope.player.selected.TeamId,
+            'Period': $scope.currentPeriod
         };
         gameService.takeStat(stat).then(function (result) {
             $scope.team = result.data;

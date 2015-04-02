@@ -16,7 +16,7 @@ app.config(function ($routeProvider) {
         templateUrl: "/Templates/signup.html"
     });
 
-    $routeProvider.when("/game/:id?", {
+    $routeProvider.when("/game/:id", {
         controller: "gameController",
         templateUrl: "/Templates/game.html"
     });
@@ -35,7 +35,14 @@ app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
     clientId: 'ngAuthApp'
 });
-
+app.filter('range', function () {
+    return function (input, total) {
+        total = parseInt(total);
+        for (var i = 0; i < total; i++)
+            input.push(i);
+        return input;
+    };
+});
 app.run(['authService', function (authService) {
     authService.fillAuthData();
 }]);

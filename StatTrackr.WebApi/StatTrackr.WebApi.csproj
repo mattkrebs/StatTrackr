@@ -254,8 +254,10 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\accountService.js" />
     <Content Include="Scripts\angular-local-storage.js" />
+    <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular-timer.js" />
     <Content Include="Scripts\angular-timer.min.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

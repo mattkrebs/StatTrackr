@@ -8,6 +8,9 @@
     <div class="col-md-4 text-center">
         <button ng-click="startTimer()" class="btn btn-default btn-success" ng-disabled="timerRunning">Start Clock</button>
         <button ng-click="stopTimer()" class="btn btn-default btn-danger" ng-disabled="!timerRunning">Stop Clock</button>
+        <div class="btn-group">
+            <label ng-repeat=" n in [] range:game.Periods" class="btn-primary" ng-model="currentPeriod" btn-radio="period">{{n}}</label>
+        </div>
     </div>
     <div class="col-md-4 text-center"><h2>Team Fouls {{gameStats.AwayStatTotals.Fouls}}</h2></div>
 
@@ -15,7 +18,7 @@
 <div class="row">
     <div class="col-md-4  text-center">       
         <div class="btn-group-vertical text-center">
-            <label class="btn btn-primary" ng-repeat="person in game.HomeTeam.Players" ng-model="player.selected" btn-radio="person">{{person.Number}} {{person.FirstName}} {{person.LastName}} {{person.TeamId}}</label>
+            <label class="btn btn-primary" ng-repeat="person in game.HomeTeam.Players" ng-model="player.selected" btn-radio="person">{{person.Number}} {{person.FirstName}} {{person.LastName}}</label>
         </div>
     </div>   
     <div class="col-md-4  text-center">
@@ -30,21 +33,38 @@
         <button type="button" class="btn btn-default" ng-click="takeStat(4)">Assist</button>
         <button type="button" class="btn btn-default" ng-click="takeStat(5)">Turnover</button>
         <button type="button" class="btn btn-default" ng-click="takeStat(6)">Steal</button>
-        <button type="button" class="btn btn-default" ng-click="takeStat(11)">Off Rebound</button>
-        <button type="button" class="btn btn-default" ng-click="takeStat(12)">Def Rebound</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(2)">Off Rebound</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(3)">Def Rebound</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(7)">Sub In</button>
+        <button type="button" class="btn btn-default" ng-click="takeStat(8))">Sub Out</button>
+
     </div>
     <div class="col-md-4  text-center">
         <div class="btn-group-vertical text-center">
-            <label class="btn btn-primary" ng-repeat="person in game.AwayTeam.Players" ng-model="player.selected" btn-radio="person">{{person.Number}} {{person.FirstName}} {{person.LastName}} {{person.TeamId}}</label>
+            <label class="btn btn-info" ng-repeat="person in game.AwayTeam.Players" ng-model="player.selected" btn-radio="person">{{person.Number}} {{person.FirstName}} {{person.LastName}}</label>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4"><ul>
-    <li ng-repeat="line in gameStats.GameStatLines">{{line.StatType.Name }} - {{line.Player.FirstName}} {{line.ClockTime}}</li>
-</ul>
-</div>
-    <div class="col-md-4"></div>
+    <div class="col-md-8"></div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Play By Play Feed</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped table-hover ">                    
+                    <tbody>
+                        <tr ng-repeat="line in gameStats.GameStatLines">
+                            <td>{{line.Player.Number}} - {{line.Player.FirstName}} {{line.Player.LastName}} {{line.StatType.Name }}</td>
+                            <td>{{line.ClockTime}}</td>
+                        </tr>
+                    </tbody>
+                </table>     
+            </div>
+        </div>
+               
+    </div>
+  
 
 </div>
