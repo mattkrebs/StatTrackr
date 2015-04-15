@@ -354,6 +354,10 @@
       <Project>{f3d245c0-ab7d-456d-be7b-d486b0aa55cc}</Project>
       <Name>StatTrackr.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StatTrackr.ServiceModel\StatTrackr.ServiceModel.csproj">
+      <Project>{e698353c-97e7-487d-8f65-a4fbf95023da}</Project>
+      <Name>StatTrackr.ServiceModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StatTrackr.Service\StatTrackr.Service.csproj">
       <Project>{ae45fb12-4a4b-4dea-9b17-928542b3e148}</Project>
       <Name>StatTrackr.Service</Name>

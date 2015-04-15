@@ -56,17 +56,6 @@
     <Compile Include="Interfaces\IStatLineService.cs" />
     <Compile Include="Models\Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Models\Mappings\StatTrackrProfile.cs" />
-    <Compile Include="Models\Request\GameRequest.cs" />
-    <Compile Include="Models\Request\PlayerRequest.cs" />
-    <Compile Include="Models\Request\RequestBase.cs" />
-    <Compile Include="Models\Request\StatLineRequest.cs" />
-    <Compile Include="Models\Request\TeamRequest.cs" />
-    <Compile Include="Models\Response\GameResponse.cs" />
-    <Compile Include="Models\Response\GameStatsResponse.cs" />
-    <Compile Include="Models\Response\PlayerResponse.cs" />
-    <Compile Include="Models\Response\StatLineResponse.cs" />
-    <Compile Include="Models\Response\TeamResponse.cs" />
-    <Compile Include="Models\Response\TeamStatsResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\PositionService.cs" />
@@ -83,6 +72,10 @@
     <ProjectReference Include="..\StatTrackr.Model\StatTrackr.Model.csproj">
       <Project>{f3d245c0-ab7d-456d-be7b-d486b0aa55cc}</Project>
       <Name>StatTrackr.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StatTrackr.ServiceModel\StatTrackr.ServiceModel.csproj">
+      <Project>{e698353c-97e7-487d-8f65-a4fbf95023da}</Project>
+      <Name>StatTrackr.ServiceModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

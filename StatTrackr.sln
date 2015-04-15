@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatTrackr.Model", "StatTra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatTrackr.WebApi", "StatTrackr.WebApi\StatTrackr.WebApi.csproj", "{02BC1FA4-C7B6-4333-9170-D7A3DC08CA74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatTrackr.ServiceModel", "StatTrackr.ServiceModel\StatTrackr.ServiceModel.csproj", "{E698353C-97E7-487D-8F65-A4FBF95023DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,16 @@ Global
 		{02BC1FA4-C7B6-4333-9170-D7A3DC08CA74}.Release|ARM.ActiveCfg = Release|Any CPU
 		{02BC1FA4-C7B6-4333-9170-D7A3DC08CA74}.Release|x64.ActiveCfg = Release|Any CPU
 		{02BC1FA4-C7B6-4333-9170-D7A3DC08CA74}.Release|x86.ActiveCfg = Release|Any CPU
+		{E698353C-97E7-487D-8F65-A4FBF95023DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E698353C-97E7-487D-8F65-A4FBF95023DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E698353C-97E7-487D-8F65-A4FBF95023DA}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{E698353C-97E7-487D-8F65-A4FBF95023DA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E698353C-97E7-487D-8F65-A4FBF95023DA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E698353C-97E7-487D-8F65-A4FBF95023DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E698353C-97E7-487D-8F65-A4FBF95023DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E698353C-97E7-487D-8F65-A4FBF95023DA}.Release|ARM.ActiveCfg = Release|Any CPU
+		{E698353C-97E7-487D-8F65-A4FBF95023DA}.Release|x64.ActiveCfg = Release|Any CPU
+		{E698353C-97E7-487D-8F65-A4FBF95023DA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

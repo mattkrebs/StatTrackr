@@ -8,8 +8,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using StatTrackr.Service.Models.Response;
-using StatTrackr.Service.Models.Request;
+using StatTrackr.ServiceModel.Request;
+using StatTrackr.ServiceModel.Response;
 using System.Web.Http.Description;
 
 namespace StatTrackr.WebApi.Controllers

@@ -2,8 +2,8 @@
 using StatTrackr.Data.Interfaces;
 using StatTrackr.Model.Data;
 using StatTrackr.Service.Interfaces;
-using StatTrackr.Service.Models.Request;
-using StatTrackr.Service.Models.Response;
+using StatTrackr.ServiceModel.Request;
+using StatTrackr.ServiceModel.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,13 +92,37 @@ namespace StatTrackr.Service.Services
         {
             var entity = _repository.GetById(id);
 
-            var game = new GameStatsResponse(entity);
+            var game = GetTotals(entity);
 
             return game;
 
-
-
         }
+        public GameStatsResponse GetTotals(Game game)
+        {
+            var gameStats = new GameStatsResponse();
+            var stats = game.StatLines.OrderByDescending(x => x.CreatedDate).ToList();
+            if (stats.Count > 0)
+            {
+                var homeStatLines = stats.Where(s => s.TeamId == game.HomeTeamId).ToList();
+                var awayStatLines = stats.Where(s => s.TeamId == game.AwayTeamId).ToList();
 
+                gameStats.HomeStatTotals = new TeamStatsResponse()
+                {
+                    Fouls = homeStatLines.Where(x => x.StatTypeId == 10 || x.StatTypeId == 11).Select(x => x.StatType.Value).Sum(),
+                    Score = homeStatLines.Where(x => x.StatTypeId == 14 || x.StatTypeId == 16 || x.StatTypeId == 1).Select(x => x.StatType.Value).Sum()
+                };
+                gameStats.AwayStatTotals = new TeamStatsResponse()
+                {
+                    Fouls = awayStatLines.Where(x => x.StatTypeId == 10 || x.StatTypeId == 11).Select(x => x.StatType.Value).Sum(),
+                    Score = awayStatLines.Where(x => x.StatTypeId == 14 || x.StatTypeId == 16 || x.StatTypeId == 1).Select(x => x.StatType.Value).Sum()
+                };
+
+                gameStats.ClockTime = stats.First().ClockTime;
+
+                gameStats.GameStatLines = Mapper.Map<List<StatLineResponse>>(stats);
+
+            }
+            return gameStats;
+        }
     }
 }
